@@ -1,7 +1,8 @@
 import { FaStar } from "react-icons/fa";
-import './Star.css'
+import './Star.css';
 
 function Star({ filled, onClick }) {
+
   return (
     <FaStar 
         className="star-container"

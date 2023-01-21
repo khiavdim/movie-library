@@ -8,18 +8,17 @@ function StarRating({ onChange, reset }) {
     onChange?.(newRating);
   };
 
-  useEffect(()=>{
-    console.log('reset', reset);
-    if (reset === true) {
-      setRating(0) }
-  },[reset]);
-  
-  return (
+  useEffect(() => {
+		if (reset) {
+      setRating(0);
+    }
+		}, [reset])
+
+    return (
     <span>
       {[1, 2, 3, 4, 5].map((value) => (
         <Star
           key={value}
-          id="star-rating"
           filled={value <= rating}
           onClick={() => changeRating(value)}
           name="category"

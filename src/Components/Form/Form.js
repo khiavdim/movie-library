@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState} from "react";
+import React, { useState, useEffect } from 'react';
 import './Form.css'
 import StarRating from "./../Star/StarRating";
+import { set } from 'react-hook-form';
 const Swal = require('sweetalert2')
 
 const categories = [
@@ -50,10 +50,13 @@ function Form(props) {
 	function logRating(value) {
 		setMovie({ ...movie, rating : value });
 	}
+
+	useEffect(()=>{
+		setReset(true)
+	}, [movie])
 	
-	  const handleSubmit = (event) => {
+	const handleSubmit = (event) => {
 		if (movie.title === "") {
-			event.preventDefault();
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -61,7 +64,6 @@ function Form(props) {
 			})
 		}
 		else if (movie.category === "") {
-			event.preventDefault();
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -69,17 +71,16 @@ function Form(props) {
 			})
 		}
 		else if (movie.rating === "") {
-			event.preventDefault();
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
 				text: 'Rating cannot be blank',
 				})
 		}
-		else {
+		else 
+		{
 			event.preventDefault();
 			setReset(true);
-			console.log('movie', movie);
 			props.addMovie(movie);
 			setMovie({ title: "", category: "", rating: "" });
 			document.getElementById("movie-form").reset();
@@ -87,12 +88,12 @@ function Form(props) {
 			Swal.fire({
 				position: 'top-end',
 				icon: 'success',
-				title: 'Your film has been added',
+				title: 'Film Rating has been documented',
 				showConfirmButton: false,
 				timer: 2000
-			  });
+			});
 		}
-	  };
+	};
 
 	return (
 	<div className="form-container">
