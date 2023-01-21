@@ -20,13 +20,30 @@ function App() {
     }
   )
 
+  const addMovie = newMovie => {
+    let {
+      title,
+      category,
+      rating
+    } = newMovie;
+    axios
+      .post("/api/movies", {
+        title,
+        category,
+        rating
+      })
+      .then(res => {
+        setMoviesList(res.data);
+      })
+      .catch(err => console.log("Error from server", err));
+  };
+
   return (
     <div className="App">
       <div className="Container">
         <div className="Title">Screen It</div>
-        {/* {moviesList} */}
-        <Form />
-        <List />
+        <Form addMovie={addMovie}/>
+        <List moviesList={moviesList}/>
       </div>
     </div>
   );

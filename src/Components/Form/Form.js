@@ -1,7 +1,10 @@
 import React from 'react';
 import './Form.css'
 
-const Form = props => (
+function Form(props) {
+	console.log('Props', props);
+
+	return (
 	<div className="form-container">
 		<form>
 			<div className="form-fields">
@@ -28,6 +31,6 @@ const Form = props => (
 			<div className='form-fields'><input type="submit" value="Add Movie"/></div>
 		</form>
 	</div>
-);
+);}
 
 export default Form;
