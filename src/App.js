@@ -10,12 +10,16 @@ function App() {
     setMovies([...movies, movie]);
   }
 
+  const deleteMovie = (movie) => {
+		setMovies(movies.filter(obj => obj !== movie));
+  }
+
   return (
     <div className="App">
       <div className="Container">
         <div className="Title">Screen It</div>
         <Form movies={movies} addMovie={addMovie}/>
-        <List movies={movies}/>
+        <List movies={movies} deleteMovie={deleteMovie}/>
       </div>
     </div>
   );

@@ -45,3 +45,69 @@
 .movie-rating {
     padding-left: 40px;
 }
+
+.flip-card {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-family: 'SF Pro Display';
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: color;
+}
+
+.flip-card-back {
+  color: white;
+  width: 64px;
+  height: 64px;
+  background: #61A0FF;
+  border-radius: 50%;
+  background-color: #dd3333;
+  transform: rotateY(180deg);
+}
+
+.no-data-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #EEEEEE;
+  font-family: 'SF Pro Display';
+  font-weight: 400;
+  font-size: 20px;
+  color: #AAAAAA;
+}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css'
 import StarRating from "./../Star/StarRating";
-import { set } from 'react-hook-form';
 const Swal = require('sweetalert2')
 
 const categories = [
@@ -110,7 +109,7 @@ function Form(props) {
 		<form onSubmit={handleSubmit} id="movie-form">
 			<div className="form-fields">
 				<div className="label">Name</div>
-				<input className="input-selections" type="text" name="title" value={movie.title} placeholder='Name of the movie' onChange={handleChange}/>
+				<input className="input-selections" type="text" name="title" value={movie.title} placeholder='Name of the movie' onChange={handleChange} focus/>
 			</div>
 			<div className='form-fields'>
 				<div className="label">Category</div>
