@@ -80,18 +80,28 @@ function Form(props) {
 		else 
 		{
 			event.preventDefault();
-			setReset(true);
-			props.addMovie(movie);
-			setMovie({ title: "", category: "", rating: "" });
-			document.getElementById("movie-form").reset();
-			setReset(false);
-			Swal.fire({
-				position: 'top-end',
-				icon: 'success',
-				title: 'Film Rating has been documented',
-				showConfirmButton: false,
-				timer: 2000
-			});
+			let duplicate = props.movies.filter( obj => (obj.title === movie.title));
+			if (duplicate.length > 0) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Duplicate film in the database',
+					})
+				duplicate = [];
+			} else {
+				setReset(true);
+				props.addMovie(movie);
+				setMovie({ title: "", category: "", rating: "" });
+				document.getElementById("movie-form").reset();
+				setReset(false);
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Film Rating has been documented',
+					showConfirmButton: false,
+					timer: 2000
+				});
+			}
 		}
 	};
 

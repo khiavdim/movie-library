@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <div className="Container">
         <div className="Title">Screen It</div>
-        <Form addMovie={addMovie}/>
+        <Form movies={movies} addMovie={addMovie}/>
         <List movies={movies}/>
       </div>
     </div>
